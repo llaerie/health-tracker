@@ -29,7 +29,7 @@ def login_or_signup():
                         st.session_state.authenticated = True
                         st.session_state.username = username
                         st.success("Login successful!")
-                        st.experimental_rerun()
+                        # Remove experimental_rerun() and let the user see the app after login
                     else:
                         st.error("Invalid username or password.")
                 except FileNotFoundError:
@@ -81,7 +81,6 @@ with st.form("habit_form"):
 
 # Save data
 filename = f"data_{st.session_state.username}.csv"
-# Save data
 if submitted:
     new_entry = pd.DataFrame({
         "Date": [datetime.now().strftime("%Y-%m-%d")],
